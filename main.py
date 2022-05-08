@@ -84,6 +84,18 @@ class SqlParsing:
     def show_all(self, typ):
         if typ == 'arr':
             pprint(self.temp_arr)
+        elif typ == 'text':
+            print('Файл:')
+            print(self.temp_arr['file'])
+            print('Таблицы:')
+            for table in self.temp_arr['tables']:
+                print(table['name_all'])
+            print('Процедуры:')
+            for execute in self.temp_arr['executes']:
+                print(execute['name_all'])
+            print('Выполненые процедуры:')
+            for procedure in self.temp_arr['procedures']:
+                print(procedure['name_all'])
 
     def show_tables(self, typ):
         if typ == 'arr':
@@ -92,4 +104,4 @@ class SqlParsing:
 
 if __name__ == "__main__":
     sql = SqlParsing("sql/")
-    sql.show_tables('arr')
+    sql.show_all('text')
